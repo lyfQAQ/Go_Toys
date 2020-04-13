@@ -21,3 +21,24 @@ func TestMapForSet(t *testing.T) {
 	// 删除元素
 	delete(mySet, 1)
 }
+
+func FindNoRepeatStringMaxLen(s string) (maxLen int) {
+	// 存放字符最后一次出现的位置
+	lastOccur := make(map[rune]int, 20)
+	start := 0
+	maxLen = 0
+	for i, ch := range []rune(s) {
+		if idx, ok := lastOccur[ch]; ok && idx >= start {
+			start = idx + 1
+		}
+		if curLen := i - start + 1; curLen > maxLen {
+			maxLen = curLen
+		}
+		lastOccur[ch] = i
+	}
+	return
+}
+func TestFindNoRepeatStringMaxLen(t *testing.T) {
+	s := "中国人人啊"
+	t.Log(FindNoRepeatStringMaxLen(s))
+}

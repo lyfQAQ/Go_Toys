@@ -1,0 +1,35 @@
+package emptyinterface
+
+import (
+	"fmt"
+	"testing"
+)
+
+func DoSomething(p interface{}) {
+
+	// 类型断言 判断 接口p 是否包含 int 类型
+
+	// if i, ok := p.(int); ok {
+	// 	fmt.Println("Integer", i)
+	// 	return
+	// }
+	// if s, ok := p.(string); ok {
+	// 	fmt.Println("string", s)
+	// 	return
+	// }
+	// fmt.Println("Unknow Type")
+
+	switch v := p.(type) {
+	case int:
+		fmt.Printf("Integer %T value %v", v, v)
+	case string:
+		fmt.Println("string", v)
+	default:
+		fmt.Println("Unknow Type")
+	}
+}
+
+func TestEmptyInterfaceAssertion(t *testing.T) {
+	DoSomething(10)
+	DoSomething("10")
+}
