@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	nums := generatrrSlice(100000000)
+	nums := generaterSlice(100000000)
 	fmt.Println(nums)
 	res := peekFindDivide(nums, 0, len(nums)-1)
 	fmt.Println(res)
@@ -25,7 +25,7 @@ func peekFindDivide(nums []int, left int, right int) int {
 	}
 }
 
-func generatrrSlice(size int) []int {
+func generaterSlice(size int) []int {
 	slice := make([]int, size)
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < size; i++ {
